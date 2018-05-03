@@ -34,7 +34,7 @@ namespace WishListTests
             Assert.True(applicationDbContextType != null, "class `ApplicationDbContext` was not found, this class should already exist in the `Data` folder, if you recieve this you may have accidentally deleted or renamed it.");
 
             // Verify ItemController contains a private property _context of type ApplicationDbContext
-            var contextField = controllerType.GetField("_context",BindingFlags.Instance|BindingFlags.NonPublic);
+            var contextField = controllerType.GetField("_context", BindingFlags.Instance | BindingFlags.NonPublic);
             Assert.True(contextField != null, "`ItemController` was found, but does not appear to contain a `private` `readonly` field `_context` of type `ApplicationDbConetext`.");
 
             // Verify ItemController contains a constructor has a parameter of type ApplicationDbContext
@@ -49,7 +49,7 @@ namespace WishListTests
             }
             var pattern = @"public\s*ItemController\s*?[(]\s*?ApplicationDbContext\s*context\s*?[)]\s*?{\s*?_context\s*?=\s*?context\s*?;\s*?}";
             var rgx = new Regex(pattern);
-            Assert.True(rgx.IsMatch(file),"`ItemController`'s constructor did not set the `_context` property to the provided `ApplicationDbContext` parameter.");
+            Assert.True(rgx.IsMatch(file), "`ItemController`'s constructor did not set the `_context` property to the provided `ApplicationDbContext` parameter.");
         }
 
         [Fact(DisplayName = "Create Item Index Action @create-item-index-action")]
@@ -72,14 +72,14 @@ namespace WishListTests
             Assert.True(method != null, "`ItemController` was found, but does not appear to contain an action `Index` with a return type of `IActionResult`.");
 
             // Verify Index has the correct return type
-            Assert.True(method.ReturnType == typeof(IActionResult),"`ItemController`'s `Index` action was found, but didn't have a return type of `IActionResult`.");
+            Assert.True(method.ReturnType == typeof(IActionResult), "`ItemController`'s `Index` action was found, but didn't have a return type of `IActionResult`.");
 
             string file;
             using (var streamReader = new StreamReader(filePath))
             {
                 file = streamReader.ReadToEnd();
             }
-            var pattern = @"public\s*IActionResult\s*Index\s*?[(]\s*?[)]\s*?{\s*?(var|List<Item>).*=\s*?_context.Items(;\s*?return\s*View[(](""Index"",)?.*[.]ToList[(]\s*?[)]\s*?[)];|[.]ToList[(]\s*?[)]\s*?;\s*?return\s*View\s*?[(]\s*?(""Index"",)?.*[)];)\s*?}";
+            var pattern = @"public\s*IActionResult\s*Index\s*?[(]\s*?[)]\s*?{\s*?((var|List<Item>).*=\s*?_context.Items(;\s*?return\s*View[(](""Index"",)?.*[.]ToList[(]\s*?[)]\s*?[)];|[.]ToList[(]\s*?[)]\s*?;\s*?return\s*View\s*?[(]\s*?(""Index"",)?.*[)];)|return\s*View\s*?[(]\s*?(""Index"",)?\s*?_context[.]Items[.]ToList[(]\s*?[)]\s*?[)]\s*?[;])\s*?}";
             var rgx = new Regex(pattern);
             Assert.True(rgx.IsMatch(file), "`ItemController`'s `Index` action does not appear to be getting all `Item`s from `_context.Items` converting it to type `List<Item>` and returning it as the model for the 'Index' view.");
         }
@@ -158,7 +158,7 @@ namespace WishListTests
             {
                 file = streamReader.ReadToEnd();
             }
-            var pattern = @"[[]HttpPost[\]]\s*?public\s* IActionResult\s* Create\s*?[(]\s*?Item\s* item\s*?[)]\s*?{\s*?_context.Items.Add[(]\s*?item\s*?[)];\s*?_context.SaveChanges[(]\s*?[)];\s*?return\s* RedirectToAction[(]\s*?""Index""\s*?(,""Item"")?[)];\s*?}";
+            var pattern = @"[[]HttpPost[\]]\s*?public\s* IActionResult\s* Create\s*?[(]\s*?((Wishlist[.])?Models[.]?)?Item\s* item\s*?[)]\s*?{\s*?_context[.](Items[.])?Add[(]\s*?item\s*?[)];\s*?_context[.]SaveChanges[(]\s*?[)];\s*?return\s* RedirectToAction[(]\s*?""Index""\s*?(,""Item"")?[)];\s*?}";
             var rgx = new Regex(pattern);
             Assert.True(rgx.IsMatch(file), "`ItemController`'s `Create` (Post) action does not appear to be adding the provided `item` to `_context.Items`, `SaveChanges`, and then redirecting to the `Item`'s `Index` action.");
         }
@@ -196,7 +196,7 @@ namespace WishListTests
             {
                 file = streamReader.ReadToEnd();
             }
-            var pattern = @"public\s*IActionResult\s*Delete\s*?[(]\s*?int\s*id\s*?[)]\s*?{\s*?.*_context.Items.FirstOrDefault[(].*[.]Id\s*?==\s*?id\s*?[)];\s*?_context.Remove[(]\s*?.*\s*?[)];\s*?_context.SaveChanges[(]\s*?[)];\s*?return\s*RedirectToAction[(]""Index""(,\s*?""Item"")?[)];\s*?}";
+            var pattern = @"public\s*IActionResult\s*Delete\s*?[(]\s*?int\s*id\s*?[)]\s*?{\s*?.*_context.Items.FirstOrDefault[(].*[.]Id\s*?==\s*?id\s*?[)];\s*?_context([.]Items)?[.]Remove[(]\s*?.*\s*?[)];\s*?_context[.]SaveChanges[(]\s*?[)];\s*?return\s*RedirectToAction[(]""Index""(,\s*?""Item"")?[)];\s*?}";
             var rgx = new Regex(pattern);
             Assert.True(rgx.IsMatch(file), "`ItemController`'s `Delete` action does not appear to be removing the `Item` with the matching `Id` to the one provided from `_context.Items`, `SaveChanges`, and then redirecting to the `Item`'s `Index` action.");
         }
