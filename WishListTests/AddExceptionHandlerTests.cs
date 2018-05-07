@@ -3,7 +3,7 @@ using System.IO;
 
 namespace WishListTests
 {
-    public class AddExceptionHandlingTests
+    public class AddExceptionHandlerTests
     {
         [Fact(DisplayName = "Configure Exception Handling @configure-exception-handling")]
         public void UseDeveloperExceptionPageTest()
