@@ -15,7 +15,7 @@ If you want to use Visual Studio (highly recommended) follow the following steps
 -   If you're using Visual Studio on Windows, to run tests open the Test menu, click Run, then click on Run all tests (results will show up in the Test Explorer)
 -   If you're using Visual Studio on macOS, to run tests, select the GradeBookTests Project, then go to the Run menu, then click on Run Unit Tests (results will show up in the Unit Tests panel)
 
-(Note: All tests should fail! It's ok. This is supposed to happen. As you complete the project, more of the tests will pass. When you complete the project, *all* tests should pass)
+(Note: All tests should fail! It's ok. This is supposed to happen. As you complete the project, more of the tests will pass. When you complete the project, **all** tests should pass)
 
 ## If you don't plan to use Visual studio
 If you would rather use something other than Visual Studio
