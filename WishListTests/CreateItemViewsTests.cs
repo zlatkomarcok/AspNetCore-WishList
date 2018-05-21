@@ -25,7 +25,7 @@ namespace WishListTests
             pattern = @"<\s*?h1\s*?>\s*?Wishlist\s*?</\s*?h1\s*?>";
             rgx = new Regex(pattern);
             Assert.True(rgx.IsMatch(file), "`Index.cshtml` was found, but does not appear to have a include an opening and closing `h1` tag with a contents of 'Wishlist'");
-            pattern = @"<\s*?[uU][lL]\s*?>\s*?@foreach[(]\s*?(var|Item)\s*item\s*in\s*Model\s*?[)]\s*?{\s*?<\s*?[lL][iI]\s*?>\s*?@item.Description\s*?<\s*?[aA](.*)\s*?>\s*?delete\s*?</\s*?[aA]\s*?>\s*?</\s*?[lL][iI]\s*?>\s*?}\s*?</\s*?[uU][lL]\s*?>";
+            pattern = @"<\s*?[uU][lL]\s*?>\s*?@foreach\s*?[(]\s*?(var|Item)\s*item\s*in\s*Model\s*?[)]\s*?{\s*?<\s*?[lL][iI]\s*?>\s*?@item.Description\s*?<\s*?[aA](.*)\s*?>\s*?delete\s*?</\s*?[aA]\s*?>\s*?</\s*?[lL][iI]\s*?>\s*?}\s*?</\s*?[uU][lL]\s*?>";
             rgx = new Regex(pattern);
             Assert.True(rgx.IsMatch(file), "`Index.cshtml` was found, but does not appear to contain a `ul` with a `foreach` loop that provides the `item.Description` and a link to the `delete` action foreach item.");
             pattern = @"<\s*?[aA](\s*?.*)\s*?>\s*?delete";
