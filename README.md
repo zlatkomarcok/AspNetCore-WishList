@@ -124,6 +124,4 @@ __Note:__ this isn't the only way to accomplish this, however; this is what the 
 
 ## What Now?
 
-You've completed the tasks of this project, if you want to continue working on this project there will be additional projects added to the ASP.NET Core path that continue where this project left off implementing authentication, more advanced view and models, as well as providing and consuming data as a web service.
-
-Otherwise now is a good time to continue on with other [ASP.NET Core courses](https://app.pluralsight.com/library/search?q=asp+net+core) to expand your understanding of the ASP.NET Core framework. You could also take a look at the [Microsoft Azure for Developers](https://app.pluralsight.com/paths/skills/microsoft-azure-for-developers) path as Azure is often used with ASP.NET Core applications.
+Now is a good time to continue on with other [ASP.NET Core courses](https://app.pluralsight.com/library/search?q=asp+net+core) to expand your understanding of the ASP.NET Core framework. You could also take a look at the [Microsoft Azure for Developers](https://app.pluralsight.com/paths/skills/microsoft-azure-for-developers) path as Azure is often used with ASP.NET Core applications.
