@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Xunit;
 
 namespace WishListTests
@@ -22,10 +22,7 @@ namespace WishListTests
                                         select type).FirstOrDefault();
 
             Assert.True(applicationDbContext != null, "`ApplicationDbContext` class was not found, ensure `ApplicationDbContext.cs` contains a `public` class `AplicationDbContext`.");
-            Assert.True(applicationDbContext.BaseType == typeof(DbContext), "`ApplicationDbContext` was found, but did not inherrit the `DbContext` class. (this will require a using directive for the `Microsoft.EntityFrameWorkCore` namespace)");
-
-            //var constructor = applicationDbContext.GetConstructor(new Type[] { typeof(DbContextOptions) });
-            //Assert.True(constructor != null, "`ApplicationDbContext` does not appear to contain a constructor accepting a parameter of type `DbContextOptions<ApplicationDbContext>`");
+            Assert.True(applicationDbContext.BaseType == typeof(DbContext), "`ApplicationDbContext` was found, but did not inherit the `DbContext` class. (this will require a using directive for the `Microsoft.EntityFrameWorkCore` namespace)");
         }
 
         [Fact(DisplayName = "Add Constructor to ApplictionDbContext @add-constructor-to-applicationdbcontext")]
@@ -42,7 +39,7 @@ namespace WishListTests
                                         select type).FirstOrDefault();
 
             Assert.True(applicationDbContext != null, "`ApplicationDbContext` class was not found, ensure `ApplicationDbContext.cs` contains a `public` class `AplicationDbContext`.");
-            Assert.True(applicationDbContext.BaseType == typeof(DbContext), "`ApplicationDbContext` was found, but did not inherrit the `DbContext` class. (this will require a using directive for the `Microsoft.EntityFrameWorkCore` namespace)");
+            Assert.True(applicationDbContext.BaseType == typeof(DbContext), "`ApplicationDbContext` was found, but did not inherit the `DbContext` class. (this will require a using directive for the `Microsoft.EntityFrameWorkCore` namespace)");
 
             var constructor = applicationDbContext.GetConstructor(new Type[] { typeof(DbContextOptions) });
             Assert.True(constructor != null, "`ApplicationDbContext` does not appear to contain a constructor accepting a parameter of type `DbContextOptions<ApplicationDbContext>`");

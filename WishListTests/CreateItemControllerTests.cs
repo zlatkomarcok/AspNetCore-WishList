@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Linq;
 using System.IO;
-using Xunit;
-using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Mvc;
+using Xunit;
 
 namespace WishListTests
 {
@@ -31,7 +31,7 @@ namespace WishListTests
                                             where type.Name == "ApplicationDbContext"
                                             select type).FirstOrDefault();
 
-            Assert.True(applicationDbContextType != null, "class `ApplicationDbContext` was not found, this class should already exist in the `Data` folder, if you recieve this you may have accidentally deleted or renamed it.");
+            Assert.True(applicationDbContextType != null, "class `ApplicationDbContext` was not found, this class should already exist in the `Data` folder, if you receive this you may have accidentally deleted or renamed it.");
 
             // Verify ItemController contains a private property _context of type ApplicationDbContext
             var contextField = controllerType.GetField("_context", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -140,7 +140,7 @@ namespace WishListTests
                             where type.FullName == "WishList.Models.Item"
                             select type).FirstOrDefault();
 
-            Assert.True(itemType != null, "`item` was not found, `Item` should have been created in a previous step, have you accidently deleted or renamed it?");
+            Assert.True(itemType != null, "`item` was not found, `Item` should have been created in a previous step, have you accidentally deleted or renamed it?");
 
             // Verify Create Action Exists
             var method = controllerType.GetMethod("Create", new Type[] { itemType });
