@@ -1,3 +1,0 @@
-Build started, please wait...
-Program.cs(15,20): error CS1003: Syntax error, ',' expected [/Users/jaron-thatcher/workspace/test-cli/AspNetCore-WishList/WishList/WishList.csproj]
-Program.cs(15,21): error CS1002: ; expected [/Users/jaron-thatcher/workspace/test-cli/AspNetCore-WishList/WishList/WishList.csproj]
