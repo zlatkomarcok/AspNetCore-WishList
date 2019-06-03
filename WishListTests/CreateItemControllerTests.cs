@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Linq;
 using System.IO;
-using Xunit;
-using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Mvc;
+using Xunit;
 
 namespace WishListTests
 {
@@ -18,20 +18,14 @@ namespace WishListTests
             // Assert Index.cshtml is in the Views/Home folder
             Assert.True(File.Exists(filePath), "`ItemController.cs` was not found in the `Controllers` folder.");
 
-            var controllerType = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                  from type in assembly.GetTypes()
-                                  where type.Name == "ItemController"
-                                  select type).FirstOrDefault();
+            var controllerType = TestHelpers.GetUserType("WishList.Controllers.ItemController");
 
             Assert.True(controllerType != null, "`ItemController.cs` was found, but it appears it does not contain a `public` class `ItemController`.");
             Assert.True(controllerType.BaseType == typeof(Controller), "`ItemController` was found, but does not appear to inherit the `Controller` class from the `Microsoft.AspNetCore.Mvc` namespace.");
 
-            var applicationDbContextType = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                            from type in assembly.GetTypes()
-                                            where type.Name == "ApplicationDbContext"
-                                            select type).FirstOrDefault();
+            var applicationDbContextType = TestHelpers.GetUserType("WishList.Data.ApplicationDbContext");
 
-            Assert.True(applicationDbContextType != null, "class `ApplicationDbContext` was not found, this class should already exist in the `Data` folder, if you recieve this you may have accidentally deleted or renamed it.");
+            Assert.True(applicationDbContextType != null, "class `ApplicationDbContext` was not found, this class should already exist in the `Data` folder, if you receive this you may have accidentally deleted or renamed it.");
 
             // Verify ItemController contains a private property _context of type ApplicationDbContext
             var contextField = controllerType.GetField("_context", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -60,10 +54,7 @@ namespace WishListTests
             // Assert Index.cshtml is in the Views/Home folder
             Assert.True(File.Exists(filePath), "`ItemController.cs` was not found in the `Controllers` folder.");
 
-            var controllerType = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                  from type in assembly.GetTypes()
-                                  where type.Name == "ItemController"
-                                  select type).FirstOrDefault();
+            var controllerType = TestHelpers.GetUserType("WishList.Controllers.ItemController");
 
             Assert.True(controllerType != null, "`ItemController.cs` was found, but it appears it does not contain a `public` class `ItemController`.");
 
@@ -92,10 +83,7 @@ namespace WishListTests
             // Assert Index.cshtml is in the Views/Home folder
             Assert.True(File.Exists(filePath), "`ItemController.cs` was not found in the `Controllers` folder.");
 
-            var controllerType = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                  from type in assembly.GetTypes()
-                                  where type.Name == "ItemController"
-                                  select type).FirstOrDefault();
+            var controllerType = TestHelpers.GetUserType("WishList.Controllers.ItemController");
 
             Assert.True(controllerType != null, "`ItemController.cs` was found, but it appears it does not contain a `public` class `ItemController`.");
 
@@ -128,19 +116,13 @@ namespace WishListTests
             // Assert Index.cshtml is in the Views/Home folder
             Assert.True(File.Exists(filePath), "`ItemController.cs` was not found in the `Controllers` folder.");
 
-            var controllerType = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                  from type in assembly.GetTypes()
-                                  where type.Name == "ItemController"
-                                  select type).FirstOrDefault();
+            var controllerType = TestHelpers.GetUserType("WishList.Controllers.ItemController");
 
             Assert.True(controllerType != null, "`ItemController.cs` was found, but it appears it does not contain a `public` class `ItemController`.");
 
-            var itemType = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                            from type in assembly.GetTypes()
-                            where type.FullName == "WishList.Models.Item"
-                            select type).FirstOrDefault();
+            var itemType = TestHelpers.GetUserType("WishList.Models.Item");
 
-            Assert.True(itemType != null, "`item` was not found, `Item` should have been created in a previous step, have you accidently deleted or renamed it?");
+            Assert.True(itemType != null, "`item` was not found, `Item` should have been created in a previous step, have you accidentally deleted or renamed it?");
 
             // Verify Create Action Exists
             var method = controllerType.GetMethod("Create", new Type[] { itemType });
@@ -171,10 +153,7 @@ namespace WishListTests
             // Assert Index.cshtml is in the Views/Home folder
             Assert.True(File.Exists(filePath), "`ItemController.cs` was not found in the `Controllers` folder.");
 
-            var controllerType = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                  from type in assembly.GetTypes()
-                                  where type.Name == "ItemController"
-                                  select type).FirstOrDefault();
+            var controllerType = TestHelpers.GetUserType("WishList.Controllers.ItemController");
 
             Assert.True(controllerType != null, "`ItemController.cs` was found, but it appears it does not contain a `public` class `ItemController`.");
 

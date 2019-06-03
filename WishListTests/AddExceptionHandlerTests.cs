@@ -1,5 +1,5 @@
-﻿using Xunit;
-using System.IO;
+﻿using System.IO;
+using Xunit;
 
 namespace WishListTests
 {

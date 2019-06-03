@@ -21,7 +21,7 @@ namespace WishListTests
             }
             var pattern = @"(?i)<\s?h1\s?>\s?.*<\/\s?h1\s?>";
             var rgx = new Regex(pattern);
-            Assert.True(rgx.IsMatch(file), "`Index.cshtml` was found, but does not appear to contain both an openning and closing `h1` tag.");
+            Assert.True(rgx.IsMatch(file), "`Index.cshtml` was found, but does not appear to contain both an opening and closing `h1` tag.");
         }
 
         [Fact(DisplayName = "Create the Shared/Error View @create-error-view")]
@@ -39,7 +39,7 @@ namespace WishListTests
             }
             var pattern = @"(?i)<\s*?p\s*?>\s*?an\s*error\s*has\s*occurred[.]\s*please\s*try\s*again[.]\s*?<\/\s*?p\s*?>";
             var rgx = new Regex(pattern);
-            Assert.True(rgx.IsMatch(file), "`Error.cshtml` was found, but does not appear to contain both an openning and closing `p` tag containing the message 'An error has occurred. Please try again.'.");
+            Assert.True(rgx.IsMatch(file), "`Error.cshtml` was found, but does not appear to contain both an opening and closing `p` tag containing the message 'An error has occurred. Please try again.'.");
         }
     }
 }
