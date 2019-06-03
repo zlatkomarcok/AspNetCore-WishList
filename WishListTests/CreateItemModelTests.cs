@@ -14,10 +14,7 @@ namespace WishListTests
             var filePath = ".." + Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + "WishList" + Path.DirectorySeparatorChar + "Models" + Path.DirectorySeparatorChar + "Item.cs";
             Assert.True(File.Exists(filePath), "`Item.cs` was not found in the `Models` folder.");
 
-            var itemModel = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                             from type in assembly.GetTypes()
-                             where type.FullName == "WishList.Models.Item"
-                             select type).FirstOrDefault();
+            var itemModel = TestHelpers.GetUserType("WishList.Models.Item");
 
             Assert.True(itemModel != null, "`Item` class was not found, ensure `Item.cs` contains a `public` class `Item`.");
             var idProperty = itemModel.GetProperty("Id");
@@ -36,10 +33,7 @@ namespace WishListTests
             // Assert Index.cshtml is in the Views/Home folder
             Assert.True(File.Exists(filePath), "`ApplicationDbContext.cs` was not found in the `Data` folder.");
 
-            var applicationDbContext = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                        from type in assembly.GetTypes()
-                                        where type.FullName == "WishList.Data.ApplicationDbContext"
-                                        select type).FirstOrDefault();
+            var applicationDbContext = TestHelpers.GetUserType("WishList.Data.ApplicationDbContext");
 
             Assert.True(applicationDbContext != null, "`ApplicationDbContext` class was not found, ensure `ApplicationDbContext.cs` contains a `public` class `AplicationDbContext`.");
 
