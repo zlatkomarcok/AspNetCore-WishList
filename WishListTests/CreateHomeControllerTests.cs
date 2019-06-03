@@ -16,10 +16,7 @@ namespace WishListTests
             // Assert Index.cshtml is in the Views/Home folder
             Assert.True(File.Exists(filePath), "`HomeController.cs` was not found in the `Controllers` folder.");
 
-            var controllerType = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                  from type in assembly.GetTypes()
-                                  where type.Name == "HomeController"
-                                  select type).FirstOrDefault();
+            var controllerType = TestHelpers.GetUserType("WishList.Controllers.HomeController");
 
             Assert.True(controllerType != null, "`HomeController.cs` was found, but does not appear to contain a `public` `HomeController` class.");
             Assert.True(controllerType.BaseType == typeof(Controller), "`HomeController` was found, but is not inheriting the `Controller` class. (you will need a using directive for `Microsoft.AspNetCore.Mvc`)");
@@ -33,10 +30,7 @@ namespace WishListTests
             // Assert Index.cshtml is in the Views/Home folder
             Assert.True(File.Exists(filePath), "`HomeController.cs` was not found in the `Controllers` folder.");
 
-            var controllerType = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                  from type in assembly.GetTypes()
-                                  where type.Name == "HomeController"
-                                  select type).FirstOrDefault();
+            var controllerType = TestHelpers.GetUserType("WishList.Controllers.HomeController");
 
             Assert.True(controllerType != null, "`HomeController.cs` was found, but does not appear to contain a `public` `HomeController` class.");
             Assert.True(controllerType.BaseType == typeof(Controller), "`HomeController` was found, but is not inheriting the `Controller` class. (you will need a using directive for `Microsoft.AspNetCore.Mvc`)");
@@ -58,10 +52,7 @@ namespace WishListTests
             // Assert Index.cshtml is in the Views/Home folder
             Assert.True(File.Exists(filePath), "`HomeController.cs` was not found in the `Controllers` folder.");
 
-            var controllerType = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                                  from type in assembly.GetTypes()
-                                  where type.Name == "HomeController"
-                                  select type).FirstOrDefault();
+            var controllerType = TestHelpers.GetUserType("WishList.Controllers.HomeController");
 
             Assert.True(controllerType != null, "`HomeController.cs` was found, but does not appear to contain a `public` `HomeController` class.");
             Assert.True(controllerType.BaseType == typeof(Controller), "`HomeController` was found, but is not inheriting the `Controller` class. (you will need a using directive for `Microsoft.AspNetCore.Mvc`)");
