@@ -41,7 +41,7 @@ __Note:__ this isn't the only way to accomplish this, however; this is what the 
 			- [ ] In the `Configure` method remove the `app.Run` entirely and add a call to `UseRouting()` on `app`.
             - [ ] In the `Configure` method after `UseRouting` add a call to `UseEndPoints()` on `app` with an argument of `endpoints => { endpoints.MapDefaultControllerRoute(); }`
 		- [ ] In the `Startup.cs` file add support for developer exception pages and user friendly error pages.
-			- [ ] In the `Configure` method before `UseRoute` add a condition that checks if `env` is set to `Development` using `IsDevelopement`.
+			- [ ] In the `Configure` method before `UseRouting` add a condition that checks if `env` is set to `Development` using `IsDevelopement`.
 				- If Development it should call `UseDeveloperExceptionPage` on `app` to get better detailed error pages.
 				- Otherwise, it should call `UseExceptionHandler` on `app` and pass it the argument "/Home/Error". Next, we'll create the generic Error page provided by this method.
 	- [ ] Create Home Views and `HomeController`
