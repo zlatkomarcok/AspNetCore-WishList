@@ -71,7 +71,7 @@ __Note:__ this isn't the only way to accomplish this, however; this is what the 
 			- [ ] Create a new class `Item` in the "WishList/Models" folder (You might need to create this folder)
 				- This class should contain a public property `Id` of type `int`.
 				- This class should contain a public property `Description` of type `string`.
-				- The `Description` property should have attributes of `Required` and `StringLength(50)`. (_Note_ : You'll need to add a `using` statement for `System.ComponentModel.DataAnnotations`.)
+				- The `Description` property should have attributes of `Required` and `MaxLength(50)`. (_Note_ : You'll need to add a `using` statement for `System.ComponentModel.DataAnnotations`.)
 			- [ ] In the `ApplicationDbContext` class add new public property `Items` of type `DbSet<Item>`. (_Note_ : You'll need to add a `using` statement for `WishList.Models`.)
 	- [ ] Create "Item" Views
 		- [ ] Add support for Tag Helpers and Layout
