@@ -38,9 +38,10 @@ __Note:__ this isn't the only way to accomplish this, however; this is what the 
 	- [ ] Add Middleware/Configuration to `Startup.cs`
 		- [ ] In the `Startup.cs` file add support for the MVC middleware and configure it to have a default route.
 			- [ ] In the `ConfigureServices` method call `AddMvc` on `services` to add support for MVC middleware.
-			- [ ] In the `Configure` method remove the `app.Run` entirely and replace it with a call to `UseMvcWithDefaultRoute` on `app`.
+			- [ ] In the `Configure` method remove the `app.Run` entirely and add a call to `UseRouting()` on `app`.
+            - [ ] In the `Configure` method after `UseRouting` add a call to `UseEndpoints()` on `app` with an argument of `endpoints => { endpoints.MapDefaultControllerRoute(); }`
 		- [ ] In the `Startup.cs` file add support for developer exception pages and user friendly error pages.
-			- [ ] In the `Configure` method before `UseMvcWithDefaultRoute` add a condition that checks if `env` is set to `Development` using `IsDevelopement`.
+			- [ ] In the `Configure` method before `UseRouting` add a condition that checks if `env` is set to `Development` using `IsDevelopement`.
 				- If Development it should call `UseDeveloperExceptionPage` on `app` to get better detailed error pages.
 				- Otherwise, it should call `UseExceptionHandler` on `app` and pass it the argument "/Home/Error". Next, we'll create the generic Error page provided by this method.
 	- [ ] Create Home Views and `HomeController`
@@ -71,7 +72,7 @@ __Note:__ this isn't the only way to accomplish this, however; this is what the 
 			- [ ] Create a new class `Item` in the "WishList/Models" folder (You might need to create this folder)
 				- This class should contain a public property `Id` of type `int`.
 				- This class should contain a public property `Description` of type `string`.
-				- The `Description` property should have attributes of `Required` and `StringLength(50)`. (_Note_ : You'll need to add a `using` statement for `System.ComponentModel.DataAnnotations`.)
+				- The `Description` property should have attributes of `Required` and `MaxLength(50)`. (_Note_ : You'll need to add a `using` statement for `System.ComponentModel.DataAnnotations`.)
 			- [ ] In the `ApplicationDbContext` class add new public property `Items` of type `DbSet<Item>`. (_Note_ : You'll need to add a `using` statement for `WishList.Models`.)
 	- [ ] Create "Item" Views
 		- [ ] Add support for Tag Helpers and Layout
