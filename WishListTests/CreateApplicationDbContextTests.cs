@@ -18,7 +18,7 @@ namespace WishListTests
 
             var applicationDbContext = TestHelpers.GetUserType("WishList.Data.ApplicationDbContext");
 
-            Assert.True(applicationDbContext != null, "`ApplicationDbContext` class was not found, ensure `ApplicationDbContext.cs` contains a `public` class `AplicationDbContext`.");
+            Assert.True(applicationDbContext != null, "`ApplicationDbContext` class was not found, ensure `ApplicationDbContext.cs` contains a `public` class `ApplicationDbContext`.");
             Assert.True(applicationDbContext.BaseType == typeof(DbContext), "`ApplicationDbContext` was found, but did not inherit the `DbContext` class. (this will require a using directive for the `Microsoft.EntityFrameWorkCore` namespace)");
         }
 
@@ -32,7 +32,7 @@ namespace WishListTests
 
             var applicationDbContext = TestHelpers.GetUserType("WishList.Data.ApplicationDbContext");
 
-            Assert.True(applicationDbContext != null, "`ApplicationDbContext` class was not found, ensure `ApplicationDbContext.cs` contains a `public` class `AplicationDbContext`.");
+            Assert.True(applicationDbContext != null, "`ApplicationDbContext` class was not found, ensure `ApplicationDbContext.cs` contains a `public` class `ApplicationDbContext`.");
             Assert.True(applicationDbContext.BaseType == typeof(DbContext), "`ApplicationDbContext` was found, but did not inherit the `DbContext` class. (this will require a using directive for the `Microsoft.EntityFrameWorkCore` namespace)");
 
             var constructor = applicationDbContext.GetConstructor(new Type[] { typeof(DbContextOptions) });
