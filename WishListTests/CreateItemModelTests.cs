@@ -35,7 +35,7 @@ namespace WishListTests
 
             var applicationDbContext = TestHelpers.GetUserType("WishList.Data.ApplicationDbContext");
 
-            Assert.True(applicationDbContext != null, "`ApplicationDbContext` class was not found, ensure `ApplicationDbContext.cs` contains a `public` class `AplicationDbContext`.");
+            Assert.True(applicationDbContext != null, "`ApplicationDbContext` class was not found, ensure `ApplicationDbContext.cs` contains a `public` class `ApplicationDbContext`.");
 
             var itemsProperty = applicationDbContext.GetProperty("Items");
             Assert.True(itemsProperty != null, "`ApplicationDbContext` class did not contain a `public` `Items` property.");

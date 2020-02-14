@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.1-sdk-alpine
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-alpine
 
 ENV APP_DIR /src/app
 
